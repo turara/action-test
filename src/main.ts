@@ -1,5 +1,6 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+
+import { wait } from './wait'
 
 async function run(): Promise<void> {
   try {
