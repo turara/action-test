@@ -1,11 +1,34 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Pull Requests Metrics'
+description: 'Get metrics about pull requests in a given cycle'
+author: 'none'
 inputs:
-  milliseconds: # change this
+  owner:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: 'Owner or organization of the repository'
+  repo:
+    required: true
+    description: 'Repository name'
+  start-date:
+    required: true
+    description: 'Start date of cycle: YYYY-MM-DD'
+  cycle-unit:
+    required: true
+    description: 'Unit of cycle: week or month'
+    default: 'month'
+  gmt:
+    required: true
+    description: 'GMT string of the timezone for the cycle: GMT+0900'
+    default: 'GMT+0000'
+  branches:
+    required: true
+    description: 'Comma separated list of target branches to be considered. If empty all branches are considered. ex: main,releases/v'
+    default: ''
+  verbose:
+    description: 'Verbose mode: true or false'
+    default: 'false'
+outputs:
+  merged-count:
+    description: 'Pull requests count merged in a given cycle to the target branches'
 runs:
   using: 'node16'
   main: 'dist/index.js'
